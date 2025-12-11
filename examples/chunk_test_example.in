@@ -1,0 +1,18 @@
+# Simple test example for chunk computation
+# This can be used as a template for testing
+
+# Example 1: 1D temperature profile
+# Divide simulation box into bins along z-axis with 1.0 Angstrom width
+# Number of bins is auto-calculated from box size
+compute_chunk bin/1d z lower 1.0
+
+# Average temperature every 10 steps, 5 samples per output, output every 50 steps
+ave_chunk 10 5 50 temp density/number file temp_profile.out
+
+# Example 2: 2D velocity field
+# compute_chunk bin/2d x lower 2.0 y lower 2.0
+# ave_chunk 20 10 200 vx vy vz mode RUNNING file velocity_field.out
+
+# Example 3: 3D density distribution
+# compute_chunk bin/3d x lower 1.0 y lower 1.0 z lower 1.0
+# ave_chunk 100 10 1000 density/mass mass file density_3d.out mode WINDOW 5
