@@ -16,73 +16,21 @@ This package adds LAMMPS-style chunk computation and time-averaging functionalit
 
 ## Quick Installation
 
-### Step 1: Copy Package to GPUMD Directory
 
 ```bash
-# Copy this entire directory to your GPUMD root directory
-cp -r chunk_feature_package /path/to/GPUMD/
-```
-
-Your directory structure should look like:
-```
-GPUMD/
-├── src/
-│   ├── measure/
-│   └── main_gpumd/
-├── chunk_feature_package/    ← This package
-│   ├── install.sh
-│   ├── src/
-│   ├── examples/
-│   └── docs/
-└── ...
-```
-
-### Step 2: Run Installation Script
-
-```bash
-cd /path/to/GPUMD/chunk_feature_package
+git clone https://github.com/luowh35/chunk_gpumd.git
+git clone https://github.com/brucefan1983/GPUMD.git
+mv chunk_gpumd/ GPUMD/
+cd GPUMD/chunk_gpumd/
+chmod +x install.sh
 sh ./install.sh
-```
-
-The script will:
-1. Verify GPUMD directory structure
-2. Create automatic backup
-3. Copy new files to `src/measure/`
-4. Modify `src/main_gpumd/run.cu`
-5. Verify installation success
-
-### Step 3: Rebuild GPUMD
-
-```bash
 cd ../src
-make clean
-make gpumd
+make
 ```
 
 ---
 
-## Package Contents
 
-```
-chunk_feature_package/
-├── install.sh                      # Installation script
-├── README.md                       # This file
-├── src/
-│   └── measure/
-│       ├── compute_chunk.cuh       # Chunk assignment header
-│       ├── compute_chunk.cu        # Chunk assignment implementation
-│       ├── ave_chunk.cuh           # Chunk averaging header
-│       └── ave_chunk.cu            # Chunk averaging implementation
-├── examples/
-│   └── chunk_test_example.in      # Usage examples
-└── docs/
-    ├── CHUNK_IMPLEMENTATION.md    # Technical documentation
-    └── INSTALLATION_GUIDE.md      # Detailed installation guide
-```
-
-**Total:** ~1,800 lines of GPU-accelerated code
-
----
 
 ## Usage Examples
 
